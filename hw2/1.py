@@ -1,13 +1,21 @@
 from pympler import asizeof
 
 
-def find_word_in_file(find_word):
+def words_generator(find_word):
     with open('hw2/rockyou.txt', 'r') as file:
-        for words in file.readlines():
-            if find_word in words.lower():
-                with open('hw2/results.txt', 'a') as find_words:
-                    find_words.write(words)
-    
+        while True:
+            line = file.readline()
+            if not line:
+                break
+            elif find_word in line:
+                yield line
+
+def find_words_of_generator(find_word):
+    with open('hw2/results.txt', 'a') as find_words:
+        for item in words_generator(find_word):
+            find_words.write(item)
+  
+def file_info():
     with open('hw2/results.txt', 'r') as file:
         num_lines = len(file.readlines())
         print("Количество строк в файле:", num_lines)
@@ -16,6 +24,8 @@ def find_word_in_file(find_word):
         size = asizeof.asizeof(file.read())
         print("Общий размер файла results.txt:", size, "байт")
 
+
 if __name__ == "__main__":
     find = input('Введите слово: ')
-    find_word_in_file(find)
+    find_words_of_generator(find)
+    file_info()
