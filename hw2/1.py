@@ -26,6 +26,5 @@ def file_info():
 
 
 if __name__ == "__main__":
-    find = input('Введите слово: ')
-    find_words_of_generator(find)
+    find_words_of_generator(input(('Введите слово: ')))
     file_info()
