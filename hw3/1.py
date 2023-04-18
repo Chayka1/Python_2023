@@ -9,12 +9,12 @@ def players_repr(players: list[dict], verbose: bool) -> None:
         print(f"{player['name']=}, {player['age']=}")
 
 
-def players_add(players: list[dict]) -> list[dict]:
+def players_add(players: list[dict], player: dict) -> list[dict]:
     name = input('Введите имя игрока: ')
     age = input('Введите возраст игрока: ')
     number = int(input('Введите номер игрока: '))
 
-    players.append({'name': name, 'age': age, 'number': number})
+    pass
 
 
 def players_del(players: list[dict], name: str) -> list[dict]:
