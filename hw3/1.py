@@ -9,16 +9,20 @@ def players_repr(players: list[dict], verbose: bool) -> None:
         print(f"{player['name']=}, {player['age']=}")
 
 
-def players_add(players: list[dict], player: dict) -> list[dict]:
-    ...
+def players_add(players: list[dict]) -> list[dict]:
+    name = input('Введите имя игрока: ')
+    age = input('Введите возраст игрока: ')
+    number = int(input('Введите номер игрока: '))
+
+    players.append({'name': name, 'age': age, 'number': number})
 
 
 def players_del(players: list[dict], name: str) -> list[dict]:
-    ...
+    pass
 
 
 def players_find(players: list[dict], field: str, value: Any) -> list[dict]:
-    ...
+    pass
 
 
 def players_get_by_name(players: list[dict], name: str) -> dict | None:
