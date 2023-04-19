@@ -33,7 +33,11 @@ def players_find(players: list[dict], field: str, value: Any) -> list[dict]:
 
 
 def players_get_by_name(players: list[dict], name: str) -> dict | None:
-    """If multiple players with same name - return the first one."""
+    for player in players:
+        if player['name'] == name:
+            return player
+    
+    return None
 
 
 def main():
@@ -43,7 +47,6 @@ def main():
         {"name": "Cavin", "age": 33, "number": 12},
     ]
     
-
     options = ["repr", "add", "del", "find", "get", "exit"]
 
     while True:
@@ -55,7 +58,6 @@ def main():
             age = int(input('Введите возраст игрока: '))
             number = int(input('Введите номер игрока: '))
             player = {'name': name, 'age': age, 'number': number}
-
             players_add(team, player)
             print('Игрок успешно добавлен!')
 
@@ -65,11 +67,13 @@ def main():
             print(players_find(team, field, value))
         
         elif user_input == 'get':
-            pass
+            name = input('Введите имя игрока: ')
+            print(players_get_by_name(team, name))
 
         elif user_input == 'del':
             name = input('Введите имя игрока: ')
-            print(players_del(team, name))
+            players_del(team, name)
+            print('Игрок успешно удален!')
 
         elif user_input == 'repr':
             players_repr(team)
@@ -77,8 +81,6 @@ def main():
         elif user_input == 'exit':
             break
             
-
-
 
 if __name__ == "__main__":
     main()
