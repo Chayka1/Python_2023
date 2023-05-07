@@ -36,4 +36,3 @@ class Price:
 
     def __repr__(self):
         return f'{self.amount:.2f} {self.currency}'
-
