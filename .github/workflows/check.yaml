@@ -1,21 +1,19 @@
-name: Python package
+name: Check code quality
 
 on: [pull_request]
 
 jobs:
-  build:
-
+  code-quality:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python 3.x
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-      - name: Install deps
+      - name: Install dependencies
         run: pip install flake8 black isort
       - name: Run linter
         run: flake8 ./
-      - name: Run formatting
+      - name: Check formatting
         run: black --check ./ && isort --check ./
