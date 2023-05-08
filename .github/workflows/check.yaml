@@ -1,11 +1,6 @@
 name: Check code quality
 
-on:
-  push:
-    branches:
-     - main
-    paths:
-     - 'packages/container/**'
+on: [pull_request]
 
 jobs:
   code-quality:
